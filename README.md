@@ -166,6 +166,14 @@ cool progress animation 酷炫的下载进度条
 
 **5.到此处大致的思路和主要的实现方法已经都说完了，收尾和开始的准备动画都是一样的类型，按照其中的动画组合实现即可，动画其中有很多小细节，小动画文章里都没有提到**
 
+##最终效果：
+
+![progress1](http://upload-images.jianshu.io/upload_images/1249505-668075c6cfff5adf.gif?imageMogr2/auto-orient/strip)
+
+![progress2failed.gif](http://upload-images.jianshu.io/upload_images/1249505-4678501349b7c2a2.gif?imageMogr2/auto-orient/strip)
+
+![progress2success.gif](http://upload-images.jianshu.io/upload_images/1249505-9cb120df3f757642.gif?imageMogr2/auto-orient/strip)
+
 ###总结一下：
 **主要使用到的类：CABasicAnimation,CAKeyFrameAnimation,CAAnimationGroup,UIBezierPath**
 **将动画通过Group，beginTime和delegate的方式按顺序组合播放即可完成一系列复杂动画**
