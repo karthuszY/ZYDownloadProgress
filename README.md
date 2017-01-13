@@ -77,6 +77,7 @@ cool progress animation 酷炫的下载进度条
       }
 
 - 而圆圈则是变为曲线有一个波浪状的动画
+
 <pre><code>
 // 进度条波动动画
 //实际上就是播放values中的那几帧画面造成一种波动的动画效果
@@ -111,6 +112,7 @@ cool progress animation 酷炫的下载进度条
     return animation;
 }
 </code></pre>
+
 <pre><code>
 //此处使用贝塞尔曲线中的方法绘制波浪曲线
 //绘制出上下凹凸的曲线赋值给circleLayer来模拟波动效果
