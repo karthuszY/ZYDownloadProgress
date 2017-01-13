@@ -124,7 +124,8 @@ cool progress animation 酷炫的下载进度条
     [path addQuadCurveToPoint:endPoint controlPoint:ctrlPoint];
     return path;
 }
-<code/><pre/>
+</code></pre>
+
 关于此处用到的UIBezierPath还是提一下把(不熟悉的可以看一下我上面提到的那篇文章)：
 调用下面这个方法绘制二次贝塞尔曲线，看下图就明白这个方法怎么使用了  
 -(void)addQuadCurveToPoint:(CGPoint)endPoint controlPoint:(CGPoint)controlPoint;
@@ -144,11 +145,12 @@ cool progress animation 酷炫的下载进度条
         }
     }
 }
-<code/><pre/>
+</code></pre>
 
 - 此时前期准备动画已经完成，铅笔移动到起点可以开始设置进度**移动铅笔**。移动铅笔我使用的方法是设置arrowLayer(铅笔)的transform，但是这样做的缺点就是你在之后算一些贝塞尔曲线的路径时，要注意**layer的transform属性**
 
 - **改变进度条颜色**我的做法是创建一个新的layer然后通过不断设置其path来实现进度条的变化
+
 <pre><code>
 //通过不断设置transform和path来实现进度条变化
 - (void)downloadingWithProgress:(CGFloat)progress
@@ -157,7 +159,8 @@ cool progress animation 酷炫的下载进度条
         self.progressLayer.path = [self progressPathWithProgress:progress].CGPath;
         self.arrowLayer.transform = CATransform3DMakeTranslation(progress*self.frame.size.width, 0, 0);
 }
-<code/><pre/>
+</code></pre>
+
 **5.到此处大致的思路和主要的实现方法已经都说完了，收尾和开始的准备动画都是一样的类型，按照其中的动画组合实现即可，动画其中有很多小细节，小动画文章里都没有提到**
 
 ###总结一下：
