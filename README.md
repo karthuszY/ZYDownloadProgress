@@ -110,7 +110,8 @@ cool progress animation 酷炫的下载进度条
     animation.removedOnCompletion = NO;
     return animation;
 }
-
+</code></pre>
+<pre><code>
 //此处使用贝塞尔曲线中的方法绘制波浪曲线
 //绘制出上下凹凸的曲线赋值给circleLayer来模拟波动效果
 - (UIBezierPath *)convexLinePathWithOffset:(CGFloat)offset
