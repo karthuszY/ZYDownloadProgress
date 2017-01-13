@@ -77,7 +77,7 @@ cool progress animation 酷炫的下载进度条
       }
 
 - 而圆圈则是变为曲线有一个波浪状的动画
-
+<pre><code>
       // 进度条波动动画
       //实际上就是播放values中的那几帧画面造成一种波动的动画效果
       - (CAKeyframeAnimation *)waveAnimation
@@ -124,7 +124,7 @@ cool progress animation 酷炫的下载进度条
           [path addQuadCurveToPoint:endPoint controlPoint:ctrlPoint];
           return path;
       }
-
+<code/><pre/>
 关于此处用到的UIBezierPath还是提一下把(不熟悉的可以看一下我上面提到的那篇文章)：
 调用下面这个方法绘制二次贝塞尔曲线，看下图就明白这个方法怎么使用了  
 -(void)addQuadCurveToPoint:(CGPoint)endPoint controlPoint:(CGPoint)controlPoint;
