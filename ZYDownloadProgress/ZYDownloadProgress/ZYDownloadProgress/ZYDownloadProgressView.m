@@ -162,8 +162,12 @@ static NSString *const kCompleteAnimationKey = @"kCompleteAnimationKey";
 {
     progress = MIN(MAX(progress, 0.0), 1.0);
     if (!self.isSuccess) {
-        self.progressLayer.path = [self progressPathWithProgress:progress].CGPath;
-        self.arrowLayer.transform = CATransform3DMakeTranslation(progress*self.frame.size.width, 0, 0);
+        // 刷新界面
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.progressLayer.path = [self progressPathWithProgress:progress].CGPath;
+            self.arrowLayer.transform = CATransform3DMakeTranslation(progress*self.frame.size.width, 0, 0);
+        });
+        
         [UIView animateWithDuration:0.2 animations:^{
             self.arrowLayer.transform = CATransform3DRotate(self.arrowLayer.transform, -kRotationAngle, 0, 0, 1);
         }];
@@ -632,6 +636,9 @@ static NSString *const kCompleteAnimationKey = @"kCompleteAnimationKey";
         if (flag) {
             // 铅笔到达起点  可以开始进度条动画
             _isAnimating = NO;
+            if (self.readyBlock) {
+                self.readyBlock(YES);
+            }
         }
     }
     

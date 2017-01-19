@@ -73,7 +73,9 @@ static CGFloat const kProgressWidth = 4.f;
     
     if (!_isAnimaiting&&!_isSuccess) {
         //        NSLog(@"%f",progress);
-        [self.indicator setProgress:progress];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.indicator setProgress:progress];
+        });        
     }
     
     if (_progress == 1&&_hasDisplayLink) {
@@ -329,6 +331,10 @@ static CGFloat const kProgressWidth = 4.f;
             [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             _isAnimaiting = NO;
             _hasDisplayLink = YES;
+            
+            if (self.readyBlock) {
+                self.readyBlock(YES);
+            }
         }
     }
 }

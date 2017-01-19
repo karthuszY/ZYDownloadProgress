@@ -69,7 +69,13 @@
         [_progressView startDownload];
         [self stopTimer];
         self.timer = [self timerWithSelector:@selector(getProgress)];
-        [self.timer setFireDate:[NSDate date]];
+        
+        __weak typeof(self) weakSelf = self;
+        _progressView.readyBlock = ^(BOOL ready){
+            if (ready) {
+                [weakSelf.timer setFireDate:[NSDate date]];
+            }
+        };
     }
 }
 - (void)getProgress
@@ -85,6 +91,7 @@
 
 - (void)resumeProgressView
 {
+    _progress = 0;
     [_progressView resume];
 }
 
@@ -110,8 +117,14 @@
     _progress = 0;
     [_progressBar startDownload];
     [self stopTimer];
-    self.timer = [self timerWithSelector:@selector(setBarProgress)];
-    [self.timer setFireDate:[NSDate date]];
+    self.timer = [self timerWithSelector:@selector(setBarProgress)];    
+    
+    __weak typeof(self) weakSelf = self;
+    _progressBar.readyBlock = ^(BOOL ready){
+        if (ready) {
+            [weakSelf.timer setFireDate:[NSDate date]];
+        }
+    };
 }
 
 - (void)setBarProgress

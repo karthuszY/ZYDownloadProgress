@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^CompleteBlock)(BOOL success);
+typedef void(^ReadyBlock)(BOOL ready);
 
 /**
  使用initWithFrame初始化
@@ -21,6 +22,7 @@ typedef void(^CompleteBlock)(BOOL success);
 @property (nonatomic, assign) CGFloat progress; // [0,1]
 
 @property (nonatomic, copy) CompleteBlock completeBlock;
+@property (nonatomic, copy) ReadyBlock readyBlock;// 准备动画完成 可以开始下载动画
 
 @property (nonatomic, assign, readonly) BOOL isSuccess; // 是否正在下载完成
 @property (nonatomic, assign, readonly) BOOL isDownloading; // 是否正在下载
